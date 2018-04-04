@@ -6,10 +6,11 @@
  * Date: 2018/4/4
  * Time: 17:23
  */
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Yii;
-use WorkermanForWindows\Worker;
-use PHPSocketIOForWindows\SocketIO;
+use Workerman\Worker;
+use PHPSocketIO\SocketIO;
 
 // 全局数组保存uid在线数据
 $uidConnectionMap = array();
@@ -62,7 +63,7 @@ $sender_io->on('connection', function($socket){
 // 当$sender_io启动后监听redis消息队列  如果队列中有数据，就处理同时下发消息
 $sender_io->on('workerStart', function(){
     while(true){
-        $newMessage = Yii::$app->redis->brpop('messageList');
+        $newMessage = \Yii::$app->redis->brpop('messageList');
         if($newMessage){
             $commands = json_decode($newMessage,true);
             switch($commands['type']) {
