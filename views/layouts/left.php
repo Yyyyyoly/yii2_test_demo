@@ -35,11 +35,6 @@
             'items' => MenuHelper::getAssignedMenu(Yii::$app->user->id,null,null,true),
         ]);
         ?>
-<!---->
-<!--        --><?//= dmstr\widgets\Menu::widget([
-//            'options' => ['class' => 'sidebar-menu'],
-//            'items' => mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id),
-//        ]); ?>
 
     </section>
 

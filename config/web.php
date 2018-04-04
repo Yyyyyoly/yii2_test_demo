@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$redis = require __DIR__ . '/redis.php';
 
 $config = [
     'id' => 'basic',
@@ -87,6 +88,7 @@ $config = [
             'defaultRoles' => ['普通用户'],
         ],
         'db' => $db,
+        'redis' => $redis,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

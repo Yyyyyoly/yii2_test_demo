@@ -23,9 +23,14 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+
+    ];
+    public $jsOptions = [
+        'position' => \yii\web\View::POS_HEAD   //在头部引入
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'yii\web\JqueryAsset',
     ];
 }
