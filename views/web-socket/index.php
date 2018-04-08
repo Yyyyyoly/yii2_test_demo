@@ -1,27 +1,33 @@
 <?php
 /* @var $this yii\web\View */
+use yii\helpers\Html;
 
 $this->title = $name;
 ?>
 <script src='//cdn.bootcss.com/socket.io/1.3.7/socket.io.js'></script>
 <script>
     // 初始化io对象
-    var socket = io('http://localhost:2120');
+    var socket = io('http://127.0.0.1:3120');
     // uid 可以为网站用户的uid，作为例子这里用session_id代替
     var uid = '<?= $uid?>';
-    // 当socket连接后发送登录请求
+    // 当socket连接后发送登录请求g
     socket.on('connect', function(){
         socket.emit('login', uid);
     });
     // 当服务端推送来消息时触发，这里简单的alert出来，用户可做成自己的展示效果
     socket.on('new_msg', function(msg){
-        console.log(msg);
-        //var msg_array = JSON.parse(msg);
-        // console.log(msg_array);
-        $('#rtn_msg').text(msg);
-        $('#rtn_msg_num').text(msg);
+        var decode_msg = JSON.parse(entityToString(msg));
+        $('#rtn_msg').text(decode_msg.msg);
+        $('#rtn_msg_num').text(decode_msg.num);
     });
 
+    // 替代php htmlspecialchars_decode
+    function entityToString(entity){
+        var div=document.createElement('div');
+        div.innerHTML=entity;
+        var res=div.innerText||div.textContent;
+        return res;
+    }
 
     function sendMsg(){
         var msg = $("#input").val();
@@ -40,6 +46,7 @@ $this->title = $name;
             });
         }
     }
+
 </script>
 
 <table class="table table-bordered text-center">
