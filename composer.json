@@ -22,7 +22,10 @@
         "dmstr/yii2-adminlte-asset": "2.*",
         "yiisoft/yii2-redis": "^2.0",
         "workerman/workerman": "^3.5",
-        "workerman/phpsocket.io": "^1.1"
+        "workerman/phpsocket.io": "^1.1",
+        "cebe/markdown": "1.0.0",
+        "phpdocumentor/reflection-docblock": "2.0.4",
+        "yiisoft/yii2-apidoc": "^2.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

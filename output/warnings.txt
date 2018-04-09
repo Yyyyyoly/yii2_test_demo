@@ -1,0 +1,80 @@
+Array
+(
+    [0] => Array
+        (
+            [line] => 15
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element 'app\controllers\SiteController'
+        )
+
+    [1] => Array
+        (
+            [line] => 17
+            [file] => controllers\SiteController.php
+            [message] => No docblock for element '$layout'
+        )
+
+    [2] => Array
+        (
+            [line] => 17
+            [file] => controllers\SiteController.php
+            [message] => No short description for element '$layout'
+        )
+
+    [3] => Array
+        (
+            [line] => 12
+            [file] => controllers\WebSocketController.php
+            [message] => No docblock for element 'app\controllers\WebSocketController'
+        )
+
+    [4] => Array
+        (
+            [line] => 12
+            [file] => controllers\WebSocketController.php
+            [message] => No docblock for element 'app\controllers\WebSocketController'
+        )
+
+    [5] => Array
+        (
+            [line] => 12
+            [file] => controllers\WebSocketController.php
+            [message] => No docblock for element 'app\controllers\WebSocketController'
+        )
+
+    [6] => Array
+        (
+            [line] => 12
+            [file] => controllers\WebSocketController.php
+            [message] => No docblock for element 'app\controllers\WebSocketController'
+        )
+
+    [7] => Array
+        (
+            [line] => 12
+            [file] => controllers\WebSocketController.php
+            [message] => No docblock for element 'app\controllers\WebSocketController'
+        )
+
+    [8] => Array
+        (
+            [line] => 12
+            [file] => controllers\WebSocketController.php
+            [message] => No docblock for element 'app\controllers\WebSocketController'
+        )
+
+    [9] => Array
+        (
+            [line] => 12
+            [file] => controllers\WebSocketController.php
+            [message] => No docblock for element 'app\controllers\WebSocketController'
+        )
+
+    [10] => Array
+        (
+            [line] => 12
+            [file] => controllers\WebSocketController.php
+            [message] => No docblock for element 'app\controllers\WebSocketController'
+        )
+
+)

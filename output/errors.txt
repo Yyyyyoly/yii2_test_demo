@@ -1,0 +1,10 @@
+Array
+(
+    [0] => Array
+        (
+            [line] => 58
+            [file] => controllers\WebSocketController.php
+            [message] => Undefined parameter documented:  in actionSendMessage().
+        )
+
+)

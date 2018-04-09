@@ -9,6 +9,10 @@ use yii\filters\AccessControl;
 use Yii;
 
 
+/**
+ * Class WebSocketController
+ * @package app\controllers
+ */
 class WebSocketController extends \yii\web\Controller
 {
 
@@ -45,8 +49,7 @@ class WebSocketController extends \yii\web\Controller
 
 
     /**
-     * 发送消息
-     * @return string
+     * 通过webSocket发送消息给当前对应的客户端
      */
     public function actionSendMessage()
     {
@@ -59,9 +62,9 @@ class WebSocketController extends \yii\web\Controller
 
 
     /**
-     * 通过推送消息至redis队列中，然后由websocket进程单独处理
-     * @param $uids
-     * @param $message
+     * 放入redis消息队列
+     * @param int $uids   用户id
+     * @param string $message  消息内容
      * @return mixed
      */
     public function sendMessage($uids, $message){
@@ -79,9 +82,9 @@ class WebSocketController extends \yii\web\Controller
 
     /**
      * 推送消息至中转http服务器中
-     * @param $uids
-     * @param $message
-     * @return mixed
+     * @param int $uids 用户id
+     * @param array $message  消息列表
+     * @return boolean 推送结果 true成功/false失败
      */
     public function sendMessageTwo($uids, $message){
         // 指明给谁推送，为空表示向所有在线用户推送
