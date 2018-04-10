@@ -77,10 +77,6 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!phpCAS::getUser()) {
-            return $this->goHome();
-        }
-
         // Initialize phpCAS
         phpCAS::client(
             CAS_VERSION_2_0,
@@ -113,12 +109,12 @@ class SiteController extends Controller
             $username = phpCAS::getUser();
             $cas_user_id = phpCAS::getAttribute('id');
             Yii::info($cas_user_id.'_'.$username, __METHOD__);
-            //用户登陆成功后,
-            return true;
+            //用户登陆成功后
+            return $this->goHome();
         } else {
             // 访问CAS的验证
             phpCAS::forceAuthentication();
-            return false;
+            exit;
         }
     }
 
