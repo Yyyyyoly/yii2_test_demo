@@ -72,6 +72,10 @@ class SiteController extends Controller
     }
 
 
+    /**
+     * 登录流程，先跳转到cas-server,
+     * 登录成功后再跳转回来进行一次login，保留了之前的rbac流程不变
+     */
     public function actionLogin(){
         // Initialize phpCAS
         phpCAS::client(
@@ -97,7 +101,8 @@ class SiteController extends Controller
         phpCAS::setNoCasServerValidation();
 
         //这里会检测服务器端的退出的通知，就能实现php和其他语言平台间同步登出了
-        phpCAS::handleLogoutRequests();
+        phpCAS::handleLogoutRequests(true,array());
+
         // force CAS authentication
         if (phpCAS::checkAuthentication()) {
             //获取登陆的用户名
@@ -152,8 +157,6 @@ class SiteController extends Controller
         phpCAS::setNoCasServerValidation();
 
         phpCAS::logout();
-
-        Yii::$app->user->logout();
         return true;
     }
 
