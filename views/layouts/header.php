@@ -101,15 +101,6 @@ use yii\helpers\Html;
                         <li class="footer"><a href="#">See All Messages</a></li>
                     </ul>
                 </li>
-                <li class="dropdown messages-menu">
-                    <div class="pull-right .btn-flat">
-                        <?= Html::a(
-                            'Login',
-                            ['/site/login'],
-                            ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
-                        ) ?>
-                    </div>
-                </li>
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
@@ -267,7 +258,12 @@ use yii\helpers\Html;
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+<!--                                <a href="#" class="btn btn-default btn-flat">Profile</a>-->
+                                <?= Html::a(
+                                    'Sign in',
+                                    ['/site/login'],
+                                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                                ) ?>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(
