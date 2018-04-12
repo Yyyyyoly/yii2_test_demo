@@ -1145,16 +1145,16 @@
         },
         {
             "name": "workerman/phpsocket.io",
-            "version": "v1.1.6",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/walkor/phpsocket.io.git",
-                "reference": "b7a7136ee73c6d6defea6ee8e315d9747146d704"
+                "reference": "d9ab179bb2c0f2ccf8f224e0bf093b5b59323e01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/walkor/phpsocket.io/b7a7136ee73c6d6defea6ee8e315d9747146d704.zip",
-                "reference": "b7a7136ee73c6d6defea6ee8e315d9747146d704",
+                "url": "https://files.phpcomposer.com/files/walkor/phpsocket.io/d9ab179bb2c0f2ccf8f224e0bf093b5b59323e01.zip",
+                "reference": "d9ab179bb2c0f2ccf8f224e0bf093b5b59323e01",
                 "shasum": ""
             },
             "require": {
@@ -1175,20 +1175,20 @@
             "keywords": [
                 "Socket.io"
             ],
-            "time": "2018-03-30T07:02:49+00:00"
+            "time": "2018-04-10T02:38:11+00:00"
         },
         {
             "name": "workerman/workerman",
-            "version": "v3.5.5",
+            "version": "v3.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/walkor/Workerman.git",
-                "reference": "e3b3e23dcee7fc6f251cf3ca0255a0dc8d4109a2"
+                "reference": "46a77574a5ca39def6dec51ddf350cf50daab309"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/walkor/Workerman/e3b3e23dcee7fc6f251cf3ca0255a0dc8d4109a2.zip",
-                "reference": "e3b3e23dcee7fc6f251cf3ca0255a0dc8d4109a2",
+                "url": "https://files.phpcomposer.com/files/walkor/Workerman/46a77574a5ca39def6dec51ddf350cf50daab309.zip",
+                "reference": "46a77574a5ca39def6dec51ddf350cf50daab309",
                 "shasum": ""
             },
             "require": {
@@ -1221,7 +1221,7 @@
                 "asynchronous",
                 "event-loop"
             ],
-            "time": "2018-04-03T02:42:27+00:00"
+            "time": "2018-04-11T11:25:52+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -1773,21 +1773,21 @@
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "7.0.6",
+            "version": "7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "e8528cb777cf5a5ccea1cf57a3522b142625d1b5"
+                "reference": "cde840638d021804ce93e8f98bcb7edbf6935423"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/Codeception/phpunit-wrapper/e8528cb777cf5a5ccea1cf57a3522b142625d1b5.zip",
-                "reference": "e8528cb777cf5a5ccea1cf57a3522b142625d1b5",
+                "url": "https://files.phpcomposer.com/files/Codeception/phpunit-wrapper/cde840638d021804ce93e8f98bcb7edbf6935423.zip",
+                "reference": "cde840638d021804ce93e8f98bcb7edbf6935423",
                 "shasum": ""
             },
             "require": {
                 "phpunit/php-code-coverage": "^6.0",
-                "phpunit/phpunit": "^7.0",
+                "phpunit/phpunit": "^7.1",
                 "sebastian/comparator": "^2.0",
                 "sebastian/diff": "^3.0"
             },
@@ -1812,7 +1812,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2018-03-31T18:49:51+00:00"
+            "time": "2018-04-10T09:05:14+00:00"
         },
         {
             "name": "codeception/specify",
@@ -2591,16 +2591,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.1.1",
+            "version": "7.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f7fe5127889519e421600fe0feeb113a5e210f20"
+                "reference": "6a17c170fb92845896e1b3b00fcb462cd4b3c017"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/sebastianbergmann/phpunit/f7fe5127889519e421600fe0feeb113a5e210f20.zip",
-                "reference": "f7fe5127889519e421600fe0feeb113a5e210f20",
+                "url": "https://files.phpcomposer.com/files/sebastianbergmann/phpunit/6a17c170fb92845896e1b3b00fcb462cd4b3c017.zip",
+                "reference": "6a17c170fb92845896e1b3b00fcb462cd4b3c017",
                 "shasum": ""
             },
             "require": {
@@ -2667,20 +2667,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-04-06T12:39:30+00:00"
+            "time": "2018-04-10T11:40:22+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "6.1.0",
+            "version": "6.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "3f5ca97eee66a07951d018f6726017629c85c86d"
+                "reference": "70c740bde8fd9ea9ea295be1cd875dd7b267e157"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/sebastianbergmann/phpunit-mock-objects/3f5ca97eee66a07951d018f6726017629c85c86d.zip",
-                "reference": "3f5ca97eee66a07951d018f6726017629c85c86d",
+                "url": "https://files.phpcomposer.com/files/sebastianbergmann/phpunit-mock-objects/70c740bde8fd9ea9ea295be1cd875dd7b267e157.zip",
+                "reference": "70c740bde8fd9ea9ea295be1cd875dd7b267e157",
                 "shasum": ""
             },
             "require": {
@@ -2723,7 +2723,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2018-04-06T08:14:40+00:00"
+            "time": "2018-04-11T04:50:36+00:00"
         },
         {
             "name": "psr/http-message",
