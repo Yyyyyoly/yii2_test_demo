@@ -449,10 +449,12 @@ class CAS_Client
                 break;
             }
         }
+
         $url = $this->_buildQueryUrl(
             $this->_server['service_validate_url'],
             'service='.urlencode($this->getURL())
         );
+
         phpCAS::traceEnd($url);
         return $url;
     }
@@ -3577,7 +3579,6 @@ class CAS_Client
      */
     private function _getClientUrl()
     {
-        $server_url = '';
         if (!empty($_SERVER['HTTP_X_FORWARDED_HOST'])) {
             // explode the host list separated by comma and use the first host
             $hosts = explode(',', $_SERVER['HTTP_X_FORWARDED_HOST']);
@@ -3586,7 +3587,8 @@ class CAS_Client
         } else if (!empty($_SERVER['HTTP_X_FORWARDED_SERVER'])) {
             $server_url = $_SERVER['HTTP_X_FORWARDED_SERVER'];
         } else {
-            if (empty($_SERVER['SERVER_NAME'])) {
+            if (!empty($_SERVER['HTTP_HOST'])) {
+//            if (empty($_SERVER['SERVER_NAME'])) {
                 $server_url = $_SERVER['HTTP_HOST'];
             } else {
                 $server_url = $_SERVER['SERVER_NAME'];

@@ -13,6 +13,8 @@ use app\models\User;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use app\filters\CasFilter;
+use app\models\LoginLog;
+use Zhuzhichao\IpLocationZh\Ip;
 
 class SiteController extends Controller
 {
@@ -24,10 +26,6 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'cas' => [
-                'class' => CasFilter::className(),
-                'except' => ['index'],
-            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
@@ -36,8 +34,12 @@ class SiteController extends Controller
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
-                    ],
+                    ]
                 ],
+            ],
+            'cas' => [
+                'class' => CasFilter::className(),
+                'except' => ['index'],
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -102,6 +104,16 @@ class SiteController extends Controller
             }
         }
 
+
+        // 登录以后记录一下登录日志
+        $logInfo = new LoginLog();
+        $logInfo->username = $username;
+        $logInfo->ip = Yii::$app->request->getUserIP();
+        $logInfo->area = implode(' ',Ip::find($logInfo->ip));
+        $logInfo->browser = Yii::$app->request->getUserAgent();
+        $logInfo->login_time = date('Y-m-d H:i:s');
+        $logInfo->save();
+
         // 登录成功后跳转首页
        // Yii::$app->response->redirect('/site/index' , 301)->send();
         return $this->redirect('/site/index');
@@ -119,6 +131,7 @@ class SiteController extends Controller
         phpCAS::setServerLogoutURL('http://'.$cas_server_url.'&service='.$own_server_url.'/');
 
         phpCAS::logout();
+        Yii::$app->user->logout();
         return true;
     }
 
