@@ -652,6 +652,7 @@ class User extends Component
         }
         $session->remove($this->idParam);
         $session->remove($this->authTimeoutParam);
+
         if ($identity) {
             $session->set($this->idParam, $identity->getId());
             if ($this->authTimeout !== null) {

@@ -313,12 +313,12 @@ class CAS_Client
     private function _getServerBaseURL()
     {
         // the URL is build only when needed
-        if (empty($this->_server['base_url'])) {
-            $uri_type = $this->_isHttps() ? 'https://' : 'http://';
-            $this->_server['base_url'] = $uri_type . $this->_getServerHostname();
-            if ($this->_getServerPort() != 443) {
+        if ( empty($this->_server['base_url']) ) {
+            $type = $this->_isHttps() ? 'https://' : 'http://';
+            $this->_server['base_url'] =  $type . $this->_getServerHostname();
+            if ($this->_getServerPort()!=443) {
                 $this->_server['base_url'] .= ':'
-                    . $this->_getServerPort();
+                .$this->_getServerPort();
             }
             $this->_server['base_url'] .= $this->_getServerURI();
         }

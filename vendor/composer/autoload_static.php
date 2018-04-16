@@ -4,15 +4,15 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1e52fecbc002c457068f9d851fcfca47
+class ComposerStaticInite3b169520ab14809ada31581f91e05b1
 {
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'fe1bcd0336136e435eaf197895daf81a' => __DIR__ . '/..' . '/nikic/php-parser/lib/bootstrap.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '180092cfc969a12e06f2132a203a3184' => __DIR__ . '/..' . '/codeception/verify/src/Codeception/function.php',
     );
 
@@ -230,8 +230,8 @@ class ComposerStaticInit1e52fecbc002c457068f9d851fcfca47
         ),
         'Codeception\\' => 
         array (
-            0 => __DIR__ . '/..' . '/codeception/base/src/Codeception',
-            1 => __DIR__ . '/..' . '/codeception/stub/src',
+            0 => __DIR__ . '/..' . '/codeception/stub/src',
+            1 => __DIR__ . '/..' . '/codeception/base/src/Codeception',
         ),
         'Channel\\' => 
         array (
@@ -244,10 +244,10 @@ class ComposerStaticInit1e52fecbc002c457068f9d851fcfca47
         array (
             'phpDocumentor' => 
             array (
-                0 => __DIR__ . '/..' . '/phpdocumentor/reflection/src',
-                1 => __DIR__ . '/..' . '/phpdocumentor/reflection/tests/unit',
-                2 => __DIR__ . '/..' . '/phpdocumentor/reflection/tests/mocks',
-                3 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+                0 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+                1 => __DIR__ . '/..' . '/phpdocumentor/reflection/src',
+                2 => __DIR__ . '/..' . '/phpdocumentor/reflection/tests/unit',
+                3 => __DIR__ . '/..' . '/phpdocumentor/reflection/tests/mocks',
             ),
         ),
         'c' => 
@@ -307,50 +307,6 @@ class ComposerStaticInit1e52fecbc002c457068f9d851fcfca47
     );
 
     public static $classMap = array (
-        'CAS_AuthenticationException' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/AuthenticationException.php',
-        'CAS_Client' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Client.php',
-        'CAS_CookieJar' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/CookieJar.php',
-        'CAS_Exception' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Exception.php',
-        'CAS_GracefullTerminationException' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/GracefullTerminationException.php',
-        'CAS_InvalidArgumentException' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/InvalidArgumentException.php',
-        'CAS_Languages_Catalan' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Languages/Catalan.php',
-        'CAS_Languages_ChineseSimplified' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Languages/ChineseSimplified.php',
-        'CAS_Languages_English' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Languages/English.php',
-        'CAS_Languages_French' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Languages/French.php',
-        'CAS_Languages_German' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Languages/German.php',
-        'CAS_Languages_Greek' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Languages/Greek.php',
-        'CAS_Languages_Japanese' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Languages/Japanese.php',
-        'CAS_Languages_LanguageInterface' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Languages/LanguageInterface.php',
-        'CAS_Languages_Spanish' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Languages/Spanish.php',
-        'CAS_OutOfSequenceBeforeAuthenticationCallException' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/OutOfSequenceBeforeAuthenticationCallException.php',
-        'CAS_OutOfSequenceBeforeClientException' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/OutOfSequenceBeforeClientException.php',
-        'CAS_OutOfSequenceBeforeProxyException' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/OutOfSequenceBeforeProxyException.php',
-        'CAS_OutOfSequenceException' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/OutOfSequenceException.php',
-        'CAS_PGTStorage_AbstractStorage' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/PGTStorage/AbstractStorage.php',
-        'CAS_PGTStorage_Db' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/PGTStorage/Db.php',
-        'CAS_PGTStorage_File' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/PGTStorage/File.php',
-        'CAS_ProxiedService' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxiedService.php',
-        'CAS_ProxiedService_Abstract' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxiedService/Abstract.php',
-        'CAS_ProxiedService_Exception' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxiedService/Exception.php',
-        'CAS_ProxiedService_Http' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxiedService/Http.php',
-        'CAS_ProxiedService_Http_Abstract' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxiedService/Http/Abstract.php',
-        'CAS_ProxiedService_Http_Get' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxiedService/Http/Get.php',
-        'CAS_ProxiedService_Http_Post' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxiedService/Http/Post.php',
-        'CAS_ProxiedService_Imap' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxiedService/Imap.php',
-        'CAS_ProxiedService_Testable' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxiedService/Testable.php',
-        'CAS_ProxyChain' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxyChain.php',
-        'CAS_ProxyChain_AllowedList' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxyChain/AllowedList.php',
-        'CAS_ProxyChain_Any' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxyChain/Any.php',
-        'CAS_ProxyChain_Interface' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxyChain/Interface.php',
-        'CAS_ProxyChain_Trusted' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxyChain/Trusted.php',
-        'CAS_ProxyTicketException' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/ProxyTicketException.php',
-        'CAS_Request_AbstractRequest' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Request/AbstractRequest.php',
-        'CAS_Request_CurlMultiRequest' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Request/CurlMultiRequest.php',
-        'CAS_Request_CurlRequest' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Request/CurlRequest.php',
-        'CAS_Request_Exception' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Request/Exception.php',
-        'CAS_Request_MultiRequestInterface' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Request/MultiRequestInterface.php',
-        'CAS_Request_RequestInterface' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/Request/RequestInterface.php',
-        'CAS_TypeMismatchException' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS/TypeMismatchException.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
@@ -884,16 +840,15 @@ class ComposerStaticInit1e52fecbc002c457068f9d851fcfca47
         'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
-        'phpCAS' => __DIR__ . '/..' . '/jasig/phpcas/source/CAS.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1e52fecbc002c457068f9d851fcfca47::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1e52fecbc002c457068f9d851fcfca47::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit1e52fecbc002c457068f9d851fcfca47::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit1e52fecbc002c457068f9d851fcfca47::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite3b169520ab14809ada31581f91e05b1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite3b169520ab14809ada31581f91e05b1::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInite3b169520ab14809ada31581f91e05b1::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInite3b169520ab14809ada31581f91e05b1::$classMap;
 
         }, null, ClassLoader::class);
     }
