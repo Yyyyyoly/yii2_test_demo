@@ -265,6 +265,13 @@ use yii\helpers\Html;
                                     ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                                 ) ?>
                             </div>
+                            <div class="pull-left" style="margin-left: 10%">
+                                <?= Html::a(
+                                    'Export',
+                                    ['/site/export-report'],
+                                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                                ) ?>
+                            </div>
                             <div class="pull-right">
                                 <?= Html::a(
                                     'Sign out',
