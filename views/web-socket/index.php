@@ -26,6 +26,7 @@ $this->title = $name;
         var div=document.createElement('div');
         div.innerHTML=entity;
         var res=div.innerText||div.textContent;
+        document.body.removeChild(div);
         return res;
     }
 
@@ -52,9 +53,9 @@ $this->title = $name;
 <table class="table table-bordered text-center">
     <tbody>
     <tr>
-        <th>输入文本<code>url:http://localhost:2120</code></th>
+        <th>输入文本<code>经后端转发至http://localhost:2020,这里监听后会触发socket服务器下发</code></th>
         <th>发送消息</th>
-        <th>后台返回推送<code>url:http://localhost:2121</code></th>
+        <th>后台返回推送<code>url:http://localhost:2121，socket服务器下发</code></th>
     </tr>
     <tr>
         <td>

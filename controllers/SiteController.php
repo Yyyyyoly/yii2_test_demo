@@ -5,6 +5,8 @@ namespace app\controllers;
 require_once(__DIR__ . '/../phpcas/CAS.php');
 
 use app\models\DailyReport;
+use app\models\Menu;
+use app\models\UserRule;
 use Yii;
 use yii\web\Response;
 use yii\web\Controller;
@@ -166,6 +168,11 @@ class SiteController extends Controller
     }
 
 
+    /**
+     * 导出 excel报表
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
     public function actionExportReport()
     {
         $username = Yii::$app->user->identity->username;
@@ -216,7 +223,7 @@ class SiteController extends Controller
 
         // Redirect output to a client’s web browser (Xlsx)
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="dailyReport-' . date('Ymd-His') . '.xlsx"');
+        header('Content-Disposition: attachment;filename="dailyReport' . date('Ymd-His') . '.xlsx"');
         header('Cache-Control: max-age=0');
         //         If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');
@@ -229,5 +236,84 @@ class SiteController extends Controller
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
         $writer->save('php://output');
+    }
+
+
+    /**
+     * 递归获取树形菜单menu
+     * @return string
+     */
+    public function actionMenuList(){
+        $menuList = Menu::find()
+        ->orderBy(['order' => SORT_ASC])
+        ->all();
+
+        $t1 = microtime(true);
+        $result = $this->getTree($menuList, 0);
+        $t2 = microtime(true);
+        $cacheList = [];
+        $t3 = microtime(true);
+        $result2 = $this->getTreeWithCache($menuList, 0, $cacheList);
+        $t4 = microtime(true);
+        // 计算一下执行时间
+        return (($t2-$t1)*1000).'ms-------------------'.(($t4-$t3)*1000).'ms';
+    }
+
+
+    /**
+     * 获取树形目录
+     * @param $menuList
+     * @param $pId
+     * @return array
+     */
+    function getTree($menuList, $pId )
+    {
+        $tree = [];
+        foreach ($menuList as $node) {
+            $parentId = intval($node->parent);
+            if ($parentId == $pId) {
+                $menu = [
+                    'id' => $node->id,
+                    'name' => $node->name,
+                    'route' => $node->route,
+                    'parentId' => $parentId,
+                    'childList' => $this->getTree($menuList, $node->id),
+                ];
+                $tree[] = $menu;
+            }
+        }
+        return $tree;
+    }
+
+
+    /**
+     * 获取树形目录，带缓存
+     * @param $menuList
+     * @param $pId
+     * @param $childList
+     * @return array
+     */
+    function getTreeWithCache($menuList, $pId, &$childList)
+    {
+        if(isset($childList[$pId])){
+            return $childList[$pId];
+        }
+
+        $tree = [];
+        foreach ($menuList as $node) {
+            $parentId = intval($node->parent);
+            if ($parentId == $pId) {
+                $menu = [
+                    'id' => $node->id,
+                    'name' => $node->name,
+                    'route' => $node->route,
+                    'parentId' => $parentId,
+                    'childList' => $this->getTreeWithCache($menuList, $node->id, $childList),
+                ];
+                $tree[] = $menu;
+            }
+        }
+        $childList[$pId] = $tree;
+        return $tree;
     }
 }

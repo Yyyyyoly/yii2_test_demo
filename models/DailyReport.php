@@ -45,7 +45,7 @@ class DailyReport extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'id',
+            'id' => '序号',
             'username' => '用户名称',
             'time' => '时间',
             'intention' => '意向数',
