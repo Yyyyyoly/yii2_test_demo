@@ -157,10 +157,16 @@ class SiteController extends Controller
         ]);
     }
 
+
     /**
-     * Displays about page.
+     * @api {get} /site/about 关于页面
+     * @apiName actionAbout
+     * @apiGroup Site
      *
-     * @return string
+     * @apiParam {Number} id
+     *
+     * @apiSuccess {String} firstname
+     * @apiSuccess {String} lastname
      */
     public function actionAbout()
     {
@@ -251,12 +257,8 @@ class SiteController extends Controller
         $t1 = microtime(true);
         $result = $this->getTree($menuList, 0);
         $t2 = microtime(true);
-        $cacheList = [];
-        $t3 = microtime(true);
-        $result2 = $this->getTreeWithCache($menuList, 0, $cacheList);
-        $t4 = microtime(true);
         // 计算一下执行时间
-        return (($t2-$t1)*1000).'ms-------------------'.(($t4-$t3)*1000).'ms';
+        return (($t2-$t1)*1000).'ms';
     }
 
 
@@ -285,35 +287,4 @@ class SiteController extends Controller
         return $tree;
     }
 
-
-    /**
-     * 获取树形目录，带缓存
-     * @param $menuList
-     * @param $pId
-     * @param $childList
-     * @return array
-     */
-    function getTreeWithCache($menuList, $pId, &$childList)
-    {
-        if(isset($childList[$pId])){
-            return $childList[$pId];
-        }
-
-        $tree = [];
-        foreach ($menuList as $node) {
-            $parentId = intval($node->parent);
-            if ($parentId == $pId) {
-                $menu = [
-                    'id' => $node->id,
-                    'name' => $node->name,
-                    'route' => $node->route,
-                    'parentId' => $parentId,
-                    'childList' => $this->getTreeWithCache($menuList, $node->id, $childList),
-                ];
-                $tree[] = $menu;
-            }
-        }
-        $childList[$pId] = $tree;
-        return $tree;
-    }
 }
