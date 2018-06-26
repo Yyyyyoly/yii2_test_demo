@@ -6,7 +6,6 @@ require_once(__DIR__ . '/../phpcas/CAS.php');
 
 use app\models\DailyReport;
 use app\models\Menu;
-use app\models\UserRule;
 use Yii;
 use yii\web\Response;
 use yii\web\Controller;
@@ -20,6 +19,9 @@ use app\models\LoginLog;
 use Zhuzhichao\IpLocationZh\Ip;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use yii\web\UploadedFile;
+use PhpOffice\PhpWord\IOFactory as PhpWordIOFactory;
+use PhpOffice\PhpWord\Settings;
 
 class SiteController extends Controller
 {
@@ -42,10 +44,10 @@ class SiteController extends Controller
                     ]
                 ],
             ],
-            'cas' => [
-                'class' => CasFilter::className(),
-                'except' => ['index'],
-            ],
+            //            'cas' => [
+            //                'class' => CasFilter::className(),
+            //                'except' => ['index'],
+            //            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -249,16 +251,17 @@ class SiteController extends Controller
      * 递归获取树形菜单menu
      * @return string
      */
-    public function actionMenuList(){
+    public function actionMenuList()
+    {
         $menuList = Menu::find()
-        ->orderBy(['order' => SORT_ASC])
-        ->all();
+            ->orderBy(['order' => SORT_ASC])
+            ->all();
 
         $t1 = microtime(true);
         $result = $this->getTree($menuList, 0);
         $t2 = microtime(true);
         // 计算一下执行时间
-        return (($t2-$t1)*1000).'ms';
+        return (($t2 - $t1) * 1000) . 'ms';
     }
 
 
@@ -268,7 +271,7 @@ class SiteController extends Controller
      * @param $pId
      * @return array
      */
-    function getTree($menuList, $pId )
+    function getTree($menuList, $pId)
     {
         $tree = [];
         foreach ($menuList as $node) {
@@ -287,4 +290,48 @@ class SiteController extends Controller
         return $tree;
     }
 
+
+    public function actionExchangeWordToHtml()
+    {
+        // 上传路径是否存在
+        $filePath = Yii::$app->basePath . '/uploads';
+        if (!file_exists($filePath)) {
+            mkdir($filePath);
+        }
+
+        // 获取上传的文件对象
+        $tmp = UploadedFile::getInstanceByName('resumeFile');
+        if ($tmp) {
+            if ($tmp->size > 3 * 1024 * 1024) {
+                return "file too large!";
+            }
+            if (!in_array($tmp->getExtension(), ['doc', 'docx', 'pdf', 'jpg', 'png'])) {
+                return "格式不符合!";
+            }
+            $newPath = $filePath . '/' . $tmp->name;
+            $tmp->saveAs($newPath);
+
+            // phpWord读取并输出 因为目前只有word无法预览，所以直接处理转换
+            try {
+                if ($tmp->getExtension() == 'doc') {
+                    $phpWord = PhpWordIOFactory::load($newPath, 'MsDoc');
+                    // second, set PHPWord PDF rendering variables
+                    Settings::setPdfRendererPath(__DIR__.'/../vendor/dompdf/dompdf');
+                    Settings::setPdfRendererName("DomPDF");
+                    set_time_limit(60);
+                    echo date('H:i:s') . " Write to PDF format";
+                    $objWriter = PhpWordIOFactory::createWriter($phpWord, 'PDF');
+                    $objWriter->save($filePath . '/' . $tmp->getBaseName() . '.pdf');
+
+                } else if ($tmp->getExtension() == 'docx') {
+                    $phpWord = PhpWordIOFactory::load($newPath);
+                    echo date('H:i:s') . " Write to HTML format";
+                    $objWriter = PhpWordIOFactory::createWriter($phpWord, 'HTML');
+                    $objWriter->save($filePath . '/' . $tmp->getBaseName() . '.html');
+                }
+            } catch (\Exception $ex) {
+                return $ex->getMessage();
+            }
+        }
+    }
 }

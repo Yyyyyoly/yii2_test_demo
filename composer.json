@@ -27,7 +27,9 @@
         "phpdocumentor/reflection-docblock": "2.0.4",
         "yiisoft/yii2-apidoc": "^2.1",
         "zhuzhichao/ip-location-zh": "^2.4",
-        "phpoffice/phpspreadsheet": "^1.2"
+        "phpoffice/phpspreadsheet": "^1.2",
+        "phpoffice/phpword": "^0.14.0",
+        "dompdf/dompdf": "^0.8.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

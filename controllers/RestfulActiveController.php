@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
  */
 class RestfulActiveController extends ActiveController
 {
+    public $modelClass = '';
     /**
      * @inheritdoc
      */
@@ -47,13 +48,15 @@ class RestfulActiveController extends ActiveController
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => LoginLog::find(),
-        ]);
-
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
+//        $dataProvider = new ActiveDataProvider([
+//            'query' => LoginLog::find(),
+//        ]);
+//
+//        return $this->render('index', [
+//            'dataProvider' => $dataProvider,
+//        ]);
+        $data = LoginLog::find()->all();
+        return $this->asJson($data);
     }
 
     /**

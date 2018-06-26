@@ -54,7 +54,8 @@ $config = [
             'cookieValidationKey' => 'RS_AyIWngNi1ojqqFObHOJ107UEHmPpd',
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
-            ]
+            ],
+            'enableCsrfValidation' => false,
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -102,11 +103,7 @@ $config = [
             'rules'=>[
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-                ['class' => 'yii\rest\UrlRule', 'controller' => [
-                                                    'restful',
-                                                    'restful-active'
-                                                ]
-                ],
+//                ['class' => 'yii\rest\UrlRule', 'controller' => ['restful','']],
             ],
         ],
     ],
