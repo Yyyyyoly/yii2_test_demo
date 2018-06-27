@@ -291,6 +291,11 @@ class SiteController extends Controller
     }
 
 
+    /**
+     * phpWord  word转html或者pdf
+     * 这个效果目前不好，基本word都会乱码。作为预览不行
+     * @return string
+     */
     public function actionExchangeWordToHtml()
     {
         // 上传路径是否存在
@@ -316,7 +321,7 @@ class SiteController extends Controller
                 if ($tmp->getExtension() == 'doc') {
                     $phpWord = PhpWordIOFactory::load($newPath, 'MsDoc');
                     // second, set PHPWord PDF rendering variables
-                    Settings::setPdfRendererPath(__DIR__.'/../vendor/dompdf/dompdf');
+                    Settings::setPdfRendererPath(__DIR__ . '/../vendor/dompdf/dompdf');
                     Settings::setPdfRendererName("DomPDF");
                     set_time_limit(60);
                     echo date('H:i:s') . " Write to PDF format";
@@ -332,6 +337,57 @@ class SiteController extends Controller
             } catch (\Exception $ex) {
                 return $ex->getMessage();
             }
+        }
+    }
+
+
+    /**
+     * LibreOffice  word转pdf
+     * @return string
+     */
+    public function actionExchangeWordToHtmlTwo()
+    {
+        // 上传路径是否存在
+        // $filePath是保存word源文档   $pdfPath是保存word转pdf后生成的文件
+        $filePath = Yii::$app->basePath . '/uploads';
+        $pdfPath = Yii::$app->basePath . '/preview';
+        if (!file_exists($filePath)) {
+            mkdir($filePath);
+        }
+        if (!file_exists($pdfPath)) {
+            mkdir($pdfPath);
+        }
+
+        // 获取上传的文件对象
+        $tmp = UploadedFile::getInstanceByName('resumeFile');
+        if ($tmp) {
+            if ($tmp->size > 3 * 1024 * 1024) {
+                return "file too large!";
+            }
+            if (!in_array($tmp->getExtension(), ['doc', 'docx', 'pdf', 'jpg', 'png'])) {
+                return "格式不符合!";
+            }
+            $newPath = $filePath . '/' . $tmp->name;
+            $tmp->saveAs($newPath);
+
+            // phpWord读取并输出 因为目前只有word无法预览，所以直接处理转换
+            // 但是需要先安装 sudo apt-get install libreoffice
+            // /usr/share/fonts还需要把这个目录下追加中文字体 fc-cache-fv 更新字体缓存
+            // 执行的状态 0为成功 1为失败
+            try {
+                $cmd = "libreoffice --headless --convert-to pdf {$newPath} --outdir {$pdfPath}/{$tmp->name}";
+                if (function_exists('exec')) {
+                    @exec($cmd, $output, $return_val);
+                    if ($return_val == 1) {
+                        echo($output);
+                        return "格式转换失败!";
+                    }
+                }
+            } catch (\Exception $ex) {
+                return $ex->getMessage();
+            }
+
+            return "转换完成";
         }
     }
 }
